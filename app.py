@@ -130,7 +130,7 @@ def fill_timesheet():
                 ws.cell(row=current_row, column=5).value = 'Yes'
             if thv:
                 ws.cell(row=current_row, column=6).value = 'Yes'
-            auth_by = day.get('authBy', '').strip()
+            auth_by = day.get('authBy', '').strip().upper()
             if auth_by:
                 ws.cell(row=current_row, column=7).value = auth_by
             if comment:
@@ -147,7 +147,7 @@ def fill_timesheet():
                 ot_time_out = ot.get('timeOut', '')
                 ot_hours    = ot.get('hours', 0)
                 ot_comment  = ot.get('comment', '').strip()
-                ot_auth     = ot.get('authBy', '').strip()
+                ot_auth     = ot.get('authBy', '').strip().upper()
  
                 if not ot_time_in and not ot_time_out and not ot_hours:
                     continue
@@ -198,7 +198,7 @@ def fill_timesheet():
                 break
             l_type  = leave.get('type', '')
             l_hours = leave.get('hours', 0)
-            l_inits = leave.get('initials', '').strip()
+            l_inits = leave.get('initials', '').strip().upper()
  
             if not l_type:
                 continue
