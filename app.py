@@ -129,6 +129,9 @@ def fill_timesheet():
                 ws.cell(row=current_row, column=5).value = 'Yes'
             if thv:
                 ws.cell(row=current_row, column=6).value = 'Yes'
+            auth_by = day.get('authBy', '').strip()
+            if auth_by:
+                ws.cell(row=current_row, column=7).value = auth_by
             if comment:
                 ws.cell(row=current_row, column=8).value = comment
 
@@ -157,10 +160,10 @@ def fill_timesheet():
                     ws.cell(row=current_row, column=3).value = parse_time(ot_time_out)
                 if ot_hours:
                     ws.cell(row=current_row, column=4).value = float(ot_hours)
-                if ot_comment:
-                    ws.cell(row=current_row, column=8).value = ot_comment
                 if ot_auth:
                     ws.cell(row=current_row, column=7).value = ot_auth
+                if ot_comment:
+                    ws.cell(row=current_row, column=8).value = ot_comment
 
                 # Yellow highlight if snow emergency
                 if is_snow_emergency(ot_comment):
